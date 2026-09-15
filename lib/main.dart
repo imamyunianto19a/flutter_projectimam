@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_projectimam/pages/homePage.dart';
-
-
+import 'package:flutter_projectimam/pages/validasi.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tugas 7 Flutter',
       theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-      home: const HomePage(),
+      home: const LoginScreenDB(),
     );
   }
 }
