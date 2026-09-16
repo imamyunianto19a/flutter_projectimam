@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'tugas9_page.dart'; // sesuaikan path kalau tugas9_page.dart ada di folder beda
+
 class DrawerMenu extends StatelessWidget {
   final String selectedMenu;
   final Function(String) onMenuSelected;
@@ -130,6 +132,26 @@ class DrawerMenu extends StatelessWidget {
               onMenuSelected('Jam');
 
               Navigator.pop(context);
+            },
+          ),
+
+          const Divider(),
+
+          // =================================================
+          // TUGAS 9 - KATEGORI MAKANAN RINGAN
+          // =================================================
+          ListTile(
+            leading: const Icon(Icons.fastfood),
+
+            title: const Text('Tugas 9: Kategori Produk'),
+
+            onTap: () {
+              Navigator.pop(context); // tutup drawer dulu
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Tugas9Page()),
+              );
             },
           ),
         ],
