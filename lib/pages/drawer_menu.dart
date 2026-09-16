@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'form_pendaftaran_page.dart'; // taruh di bagian import paling atas
 import 'tugas9_page.dart'; // sesuaikan path kalau tugas9_page.dart ada di folder beda
 
 class DrawerMenu extends StatelessWidget {
@@ -136,8 +136,7 @@ class DrawerMenu extends StatelessWidget {
           ),
 
           const Divider(),
-
-          // =================================================
+      
           // TUGAS 9 - KATEGORI MAKANAN RINGAN
           // =================================================
           ListTile(
@@ -154,7 +153,20 @@ class DrawerMenu extends StatelessWidget {
               );
             },
           ),
-        ],
+              // TUGAS 10 - FORM PENDAFTARAN
+          // =================================================
+          ListTile(
+            leading: const Icon(Icons.how_to_reg),
+            title: const Text('Tugas 10: Form Pendaftaran'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FormPendaftaranPage()),
+              );
+            },
+          ),
+      ],
       ),
     );
   }
