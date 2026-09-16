@@ -1,43 +1,80 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projectimam/widgets/bottom_navigator.dart';
-   import 'package:flutter_projectimam/widgets/bottom_navigator.dart';
-   import 'widgets/bottom_navigator.dart';
 
-import 'widgets/bottom_navigator.dart';
+import 'drawer_menu.dart';
+import 'checkbox_page.dart';
+import 'switch_page.dart';
+import 'dropdown_page.dart';
+import 'date_page.dart';
+import 'time_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class MyHomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+class _HomePageState extends State<HomePage> {
+  // Menu yang sedang aktif
+  String selectedMenu = 'Checkbox';
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home', style: TextStyle(fontSize: 30)),
-    Text('Index 1: Cart', style: TextStyle(fontSize: 30)),
-    Text('Index 2: Profile', style: TextStyle(fontSize: 30)),
-  ];
+  // =====================================================
+  // MEMBUAT BODY BERDASARKAN MENU
+  // =====================================================
 
-  void _onItemTapped(int index) {
+  Widget buildBody() {
+    switch (selectedMenu) {
+      case 'Checkbox':
+        return const CheckboxPage();
+
+      case 'Switch':
+        return const SwitchPage();
+
+      case 'Dropdown':
+        return const DropdownPage();
+
+      case 'Tanggal':
+        return const DatePage();
+
+      case 'Jam':
+        return const TimePage();
+
+      default:
+        return const CheckboxPage();
+    }
+  }
+
+  // =====================================================
+  // MEMILIH MENU
+  // =====================================================
+
+  void selectMenu(String menu) {
     setState(() {
-      _selectedIndex = index;
+      selectedMenu = menu;
     });
   }
+
+  // =====================================================
+  // BUILD
+  // =====================================================
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Home Page')),
-
-      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
-
-      bottomNavigationBar: BottomNavigator(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
+      appBar: AppBar(
+        title: Text(selectedMenu),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
+
+      // Drawer
+      drawer: DrawerMenu(
+        selectedMenu: selectedMenu,
+        onMenuSelected: selectMenu,
+      ),
+
+      // Body
+      body: buildBody(),
     );
   }
 }
