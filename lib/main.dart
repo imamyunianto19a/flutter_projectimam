@@ -4,7 +4,7 @@ import 'package:flutter_projectimam/day15/views/splash_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // <-- pindah ke SINI, di dalam main()
+  WidgetsFlutterBinding.ensureInitialized();   // <-- pindah ke SINI, di dalam main()
   await initializeDateFormatting('id_ID', null);
   await PreferenceHandler.init();
   runApp(const MyApp());
